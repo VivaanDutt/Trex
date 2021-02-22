@@ -21,7 +21,7 @@ monkey_running = loadAnimation("sprite_0.png","sprite_1.png","sprite_2.png","spr
 
 function setup() {
 
-  createCanvas(400, 400);
+  createCanvas(displayWidth - 20, displayHeight - 20);
 
   monkey = createSprite(80, 315, 20, 20); 
   monkey.addAnimation("moving", monkey_running);
@@ -38,7 +38,8 @@ function setup() {
 
 function draw() {
   background("white");
-
+  camera.position.x = monkey.x;
+  camera.position.y = displayHeight/2;
   stroke("white");
   textSize(20);
   fill("white");
