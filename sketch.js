@@ -38,23 +38,31 @@ function draw() {
   background(jungleBackground);
   camera.position.x = monkey.x;
   camera.position.y = displayHeight/2;
-  stroke("white");
+  rectMode(CENTER);
+  fill("black");
+  rect(monkey.x + 40, 45, 300, 40);
+  stroke("black");
   textSize(20);
   fill("white");
-  text("Score: " + score, 500, 50);
+  text("Score: " + score, monkey.x + 100, 50);
   
   stroke("black");
   textSize(20);
-  fill("black");
+  fill("white");
   if(obstacleGroup.isTouching(monkey) === false) {
   survivalTime = Math.ceil(frameCount/frameRate());
-  text("Survival Time: " + survivalTime, 100, 50);
+  text("Survival Time: " + survivalTime, monkey.x - 100, 50);
   }
-  if (keyDown("space") && monkey.y > 800) {
+  if (keyDown("space") && monkey.y > (displayHeight - displayHeight/5)) {
     monkey.velocityY = -25;
   }   
+
+  if (keyDown("shift")) {
+    monkey.velocityY = 50;
+  }
   
   ground.velocityX = monkey.velocityX;
+  monkey.velocityX = -score/10
   // if (ground.x < 0) {
   //   ground.x = ground.width/2;
   // } 
